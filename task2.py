@@ -1,15 +1,17 @@
-def matches(team):
-    
-    count_matches = 0 
-    match = None
-    while match != 1:
-        ex_team = 0
-        if team % 2 != 0:
-            ex_team = 1
-        match = team // 2
-        team = (team // 2) + ex_team
-        count_matches += match
-    return count_matches
+def matches(team): # вводим функцию
+    count_matches = 0 # ввел начальное значение счетчика для подсчетов матчей
+    match = None # обозначил пустую переменную 
+    while match != 1: # условие для цикла 
+        ex_team = 0 # команда для нечетного количества 
+        if team % 2 != 0: # если команд нечетное количество
+            ex_team = 1 # добавляем к переменой для нечетного количества единицу
+        match = team // 2 # количество матчей за раунд
+        team = (team // 2) + ex_team # количество оставшихся команд после раунда
+        count_matches += match # общее количество матчей 
+    return count_matches # возвращаем значение 
 
 x  = int(input(" n = "))
 print(matches(x))
+
+
+""" Сложность - O(n)"""
