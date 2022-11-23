@@ -1,0 +1,119 @@
+
+    # table = [[1] * cols for _ in range(rows)]
+    #table = []
+    #for i in range(rows):
+     #   table.append([1] * cols)
+
+    #for i in range(1, len(table)):
+     #   for j in range(1, len(table[i])):
+      #      table[i][j] = table[i-1][j] + table[i][j-1]
+    #return table[rows-1][cols-1]
+
+#print(uniquePaths(3, 7))
+
+
+
+#def f(a):
+    #spisok = [[1], [1,1]]
+    #for i in range(a-2):
+     #   ttt = spisok[-1]
+      #  ddd = [1]*(len(ttt)+1)
+       # for j in range(1, len(ddd)-1):
+        #    ddd[j] = ttt[j] + ttt[j-1]
+        #spisok.append(ddd)
+    #return spisok
+#print(f(5))
+
+
+
+
+#class ListNode:
+ #   def __init__ (self, val = 0, next = None):
+  #      self.val = val
+   #     self.next = next 
+#
+#
+#start_node = ListNode(5, ListNode(3, ListNode(4, ListNode(5))))
+#ptr = start_node
+#
+#count = 0
+#while count < 3 - 1:
+ #   count += 1
+  #  ptr = ptr.next
+#print(ptr.val)
+
+
+
+
+class ListNode:
+    def __init__(self, val = 0, next = None):
+        self.val = val
+        self.next = next
+
+
+class LinkedList:
+    def __init__(self, head = None):
+        self.head = head
+
+    def append(self, val):
+        new_node = ListNode(val)
+        if self.head == None:
+            self.head = new_node
+        else:
+            curr = self.head
+            while curr.next != None:
+                curr = curr.next
+            curr.next = new_node
+
+    def __str__(self):
+        res = ''
+        curr = self.head
+        while curr != None:
+            res += f'{str(curr.val)}'
+            curr = curr.next
+        return res + 'None ->'
+            
+
+    def find(self, ind):
+        curr = self.head
+        for i in range(ind):
+            curr = curr.next
+        return curr.val
+
+
+
+l1 = LinkedList()
+l1.append(3)
+l1.append(1)
+l1.append(4)
+print(l1)
+
+
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
+        stack = [(root, '')]
+        s = 0
+        while stack:
+            cur_vertex, path = stack.pop()
+
+            if cur_vertex.left == None and cur_vertex.right == None:
+                s += int(path + str(cur_vertex.val), base=2)
+
+            if cur_vertex.left != None:
+                stack.append( (cur_vertex.left, path + str(cur_vertex.val)) )
+            
+            if cur_vertex.right != None:
+                stack.append( (cur_vertex.right, path + str(cur_vertex.val)) )
+        
+        return s
+
+
+            

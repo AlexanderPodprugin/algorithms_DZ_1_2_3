@@ -11,6 +11,4 @@ def steps(num): #вводим функцию
 
 x = int(input(" num = "))
 print(steps(x))
-
-
 """ Сложность - O(n) """
