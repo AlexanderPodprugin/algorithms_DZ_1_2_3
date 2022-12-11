@@ -6,3 +6,6 @@ def hasCycle(self, head): # создаем функцию
         if slow == fast: # если slow и fast на одном узле
             return True # то возвращаем true
     return False # иначе возвращаем значение false 
+
+
+    """O(n)"""
